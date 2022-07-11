@@ -3,7 +3,7 @@
 
 <head>
   <!-- Required meta tags -->
-  <meta charset="utf-8">
+  <meta charset="utf-8">\
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Saigon Delight</title>
   <!-- base:css -->
@@ -19,6 +19,21 @@
 </head>
 <body>
   <div class="container-scroller d-flex">
+    <div class="row p-0 m-0 proBanner" id="proBanner">
+      <div class="col-md-12 p-0 m-0">
+        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+          <div class="ps-lg-1">
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="https://www.bootstrapdash.com/product/spica-areportin/"><i class="mdi mdi-home me-3 text-white"></i></a>
+            <button id="bannerClose" class="btn border-0 p-0">
+              <i class="mdi mdi-close text-white mr-0"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
 {{-- Sidebar --}}
 @include('template.sidebar')
     <div class="container-fluid page-body-wrapper">
@@ -60,76 +75,81 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                   <!-- Notifikasi menggunakan flash session data -->
-                @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-                @endif
-
-                @if (session('error'))
-                <div class="alert alert-error">
-                    {{ session('error') }}
-                </div>
-                @endif
-
-                <div class="card border-0 shadow rounded">
-                    <div class="card-body">
-                        <form action="{{ route('daftarmenu.update', $daftarmenu->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-
-                            <div class="form-group">
-                                <label for="kategori_menu">Kategori Menu</label>
-                                <select name="kategori_menu" id="kategori_menu" class="form-control" required>
-                                    <option selected>Pilih Daftar Menu</option>
-                                    @foreach ( $kategori as $i )
-                                      <option value="{{ $i->id }}">{{ $i->nama_kategori }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="kode_menu">Kode Menu</label>
-                                <input type="text" class="form-control @error('kode_menu') is-invalid @enderror"
-                                    name="kode_menu" value="{{ old('kode_menu', $daftarmenu->kode_menu) }}" required>
-
-                                <!-- error message untuk title -->
-                                @error('kode_menu')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_menu">Nama Menu</label>
-                                <input type="text" class="form-control @error('nama_menu') is-invalid @enderror"
-                                    name="nama_menu" value="{{ old('nama_menu', $daftarmenu->nama_menu) }}" required>
-
-                                <!-- error message untuk title -->
-                                @error('nama_menu')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="harga_menu">Harga Menu</label>
-                                <input type="text" class="form-control @error('harga_menu') is-invalid @enderror"
-                                    name="harga_menu" value="{{ old('harga_menu', $daftarmenu->harga_menu) }}" required>
-
-                                <!-- error message untuk title -->
-                                @error('harga_menu')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-md btn-primary">Update</button>
-                            <a href="{{ route('daftarmenu.index') }}" class="btn btn-md btn-secondary">back</a>
-                        </form>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
-                </div>
+                    @endif
+
+                    @if (session('error'))
+                    <div class="alert alert-error">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
+                    <div class="card border-0 shadow rounded">
+                        <div class="card-body">
+                            <form action="{{ route('laporan.store') }}" method="POST">
+                                @csrf
+
+                                <div class="form-group">
+                                  <label for="daftar_menu">Daftar Menu</label>
+                                  <select name="daftar_menu" class="form-control" required>
+                                      <option selected disabled>-- Pilih Daftar Menu --</option>
+                                      @foreach ( $daftarmenu as $i )
+                                        <option value="{{ $i->id }}">{{ $i->nama_menu }}</option>
+                                      @endforeach
+                                  </select>
+                                </div>
+
+                                {{--
+                                <div class="form-group">
+                                  <label for="harga">Harga</label>
+                                  <input type="text" class="form-control @error('harga') is-invalid @enderror"
+                                      name="harga" value="{{ old('harga') }}" required>
+
+                                  <!-- error message untuk title -->
+                                  @error('harga')
+                                  <div class="invalid-feedback">
+                                      {{ $message }}
+                                  </div>
+                                  @enderror
+                                </div>
+                               
+
+                                <div class="form-group">
+                                    <label for="jumlah">Jumlah</label>
+                                    <input type="text" class="form-control @error('jumlah') is-invalid @enderror"
+                                        name="jumlah" value="{{ old('jumlah') }}" required>
+
+                                    <!-- error message untuk title -->
+                                    @error('jumlah')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                --}}
+
+                                <div class="form-group">
+                                    <label for="total">Total</label>
+                                    <input type="text" class="form-control @error('total') is-invalid @enderror"
+                                        name="total" value="{{ old('total') }}" required>
+
+                                    <!-- error message untuk title -->
+                                    @error('total')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <button type="submit" class="btn btn-md btn-primary">Save</button>
+                                <a href="{{ route('laporan.index') }}" class="btn btn-md btn-secondary">back</a>
+
+                            </form>
+                        </div>
+                    </div>
                 
               </div>
             </div>
@@ -174,15 +194,5 @@
   <!-- Custom js for this page-->
   <script src="../../js/dashboard.js"></script>
   <!-- End custom js for this page-->
-
-  <script>
-    var options = document.getElementById("kategori_menu").options;
-    for (var i = 0; i < options.length; i++) {
-      if (options[i].text == "{{ $getkategori['nama_kategori']; }}") {
-        options[i].selected = true;
-        break;
-      }
-    }
-  </script>
 </body>
 </html>

@@ -19,8 +19,27 @@
 </head>
 <body>
   <div class="container-scroller d-flex">
-  {{-- Sidebar --}}
-  @include('template.sidebar')
+    <div class="row p-0 m-0 proBanner" id="proBanner">
+      <div class="col-md-12 p-0 m-0">
+        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+          <div class="ps-lg-1">
+            <div class="d-flex align-items-center justify-content-between">
+              <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
+              <a href="https://www.bootstrapdash.com/product/spica-areportin/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="https://www.bootstrapdash.com/product/spica-areportin/"><i class="mdi mdi-home me-3 text-white"></i></a>
+            <button id="bannerClose" class="btn border-0 p-0">
+              <i class="mdi mdi-close text-white mr-0"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+{{-- Sidebar --}}
+@include('template.sidebar')
     <div class="container-fluid page-body-wrapper">
       <!-- partial:./partials/_navbar.html -->
       <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row">
@@ -83,59 +102,33 @@
       <div class="main-panel">
         <div class="content-wrapper">
 
-          {{-- <div class="row">
-            <div class="col-12 col-xl-6 grid-margin stretch-card">
-              <div class="row w-100 flex-grow">
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <p class="card-title">ABOUT US</p>
-                      <p> class 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> --}}
           <div class="row">
-            <!-- Notifikasi menggunakan flash session data -->
-            @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-
-            @if (session('error'))
-            <div class="alert alert-error">
-                {{ session('error') }}
-            </div>
-            @endif
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Daftar Menu</h4>
+                  <h4 class="card-title">Laporan Penjualan</h4>
                   <div class="table-responsive">
-                    <a href="{{ route('daftarmenu.create') }}" class="btn btn-md btn-success  mb-3 float-right">New
-                        Daftar Menu</a>
+                    <a href="{{ route('laporan.create') }}" class="btn btn-md btn-success  mb-3 float-right">Tambah Laporan</a>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Kode Menu</th>
                                 <th scope="col">Nama Menu</th>
-                                <th scope="col">Kategori</th>
                                 <th scope="col">Harga</th>
+                                <th scope="col">Jumlah Harga</th>
+                                <th scope="col">Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($daftarmenu as $dm)
+                            @forelse ($laporan as $report)
                             <tr>
-                                <td>{{ $dm->kode_menu }}</td>
-                                <td>{{ $dm->nama_menu }}</td>
-                                <td>{{ $dm->kategori->nama_kategori }}</td>
-                                <td>{{ $dm->harga_menu }}</td>
+                                <td>{{ $report->namamenu }}</td>
+                                <td>{{ $report->harga }}</td>
+                                <td>{{ $report->jumlah }}</td>
+                                <td>{{ $report->total }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('daftarmenu.destroy', $dm->id) }}" method="POST">
-                                        <a href="{{ route('daftarmenu.edit', $dm->id) }}"
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                        action="{{ route('laporan.destroy', $report->id) }}" method="POST">
+                                        <a href="{{ route('laporan.edit', $report->id) }}"
                                             class="btn btn-sm btn-primary">EDIT</a>
                                         @csrf
                                         @method('DELETE')
@@ -145,10 +138,10 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-center text-mute" colspan="5">Data Daftar Menu tidak tersedia</td>
+                                <td class="text-center text-mute" colspan="4">Data Laporan tidak tersedia</td>
                             </tr>
-                            @endforelse
                         </tbody>
+                            @endforelse
                     </table>
                   </div>
                 </div>
@@ -196,5 +189,4 @@
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
 </html>

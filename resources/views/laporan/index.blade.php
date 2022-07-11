@@ -83,59 +83,36 @@
       <div class="main-panel">
         <div class="content-wrapper">
 
-          {{-- <div class="row">
-            <div class="col-12 col-xl-6 grid-margin stretch-card">
-              <div class="row w-100 flex-grow">
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <p class="card-title">ABOUT US</p>
-                      <p> class 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> --}}
           <div class="row">
-            <!-- Notifikasi menggunakan flash session data -->
-            @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-
-            @if (session('error'))
-            <div class="alert alert-error">
-                {{ session('error') }}
-            </div>
-            @endif
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Daftar Menu</h4>
+                  <h4 class="card-title">Laporan Penjualan</h4>
                   <div class="table-responsive">
-                    <a href="{{ route('daftarmenu.create') }}" class="btn btn-md btn-success  mb-3 float-right">New
-                        Daftar Menu</a>
+                    <a href="{{ route('laporan.create') }}" class="btn btn-md btn-success  mb-3 float-right">Tambah Laporan</a>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Kode Menu</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Nama Menu</th>
-                                <th scope="col">Kategori</th>
                                 <th scope="col">Harga</th>
+                                <th scope="col">Jumlah Harga</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($daftarmenu as $dm)
+                            @forelse ($laporan as $key => $report)
                             <tr>
-                                <td>{{ $dm->kode_menu }}</td>
-                                <td>{{ $dm->nama_menu }}</td>
-                                <td>{{ $dm->kategori->nama_kategori }}</td>
-                                <td>{{ $dm->harga_menu }}</td>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $report->daftarmenu->nama_menu }}</td>
+                                <td>Rp. {{ $report->harga_menu }}</td>
+                                <td>Rp. {{ $report->jumlah }}</td>
+                                <td>{{ $report->total }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('daftarmenu.destroy', $dm->id) }}" method="POST">
-                                        <a href="{{ route('daftarmenu.edit', $dm->id) }}"
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                        action="{{ route('laporan.destroy', $report->id) }}" method="POST">
+                                        <a href="{{ route('laporan.edit', $report->id) }}"
                                             class="btn btn-sm btn-primary">EDIT</a>
                                         @csrf
                                         @method('DELETE')
@@ -145,10 +122,10 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-center text-mute" colspan="5">Data Daftar Menu tidak tersedia</td>
+                                <td class="text-center text-mute" colspan="4">Data Laporan tidak tersedia</td>
                             </tr>
-                            @endforelse
                         </tbody>
+                            @endforelse
                     </table>
                   </div>
                 </div>
@@ -196,5 +173,4 @@
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
 </html>

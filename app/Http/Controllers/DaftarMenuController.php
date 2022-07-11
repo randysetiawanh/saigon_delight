@@ -59,13 +59,15 @@ class DaftarMenuController extends Controller
     public function edit($id)
     {
         $daftarmenu = DaftarMenu::findOrFail($id);
-        return view('daftarmenu.edit', compact('daftarmenu'));
+        $getkategori = Kategori::where('id','=',$daftarmenu['kategori_id'])->get()->first();
+        $kategori = Kategori::all();
+        return view('daftarmenu.edit', compact('daftarmenu', 'kategori', 'getkategori'));
     }
     
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'kategori_id' => 'required',
+            'kategori_menu' => 'required',
             'kode_menu' => 'required',
             'nama_menu' => 'required',
             'harga_menu' => 'required'
@@ -74,10 +76,10 @@ class DaftarMenuController extends Controller
         $daftarmenu = DaftarMenu::findOrFail($id);
 
         $daftarmenu->update([
-            'kategori_id' => $request->kategori_id,
+            'kategori_id' => $request->kategori_menu,
             'kode_menu' => $request->kode_menu,
             'nama_menu' => $request->nama_menu,
-            'harga_menu' => $request->harga
+            'harga_menu' => $request->harga_menu
         ]);
 
         if ($daftarmenu) {

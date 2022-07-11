@@ -18,4 +18,9 @@ class DaftarMenu extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function daftarmenu()
+    {
+        return $this->hasMany(Laporan::class);
+    }
 }

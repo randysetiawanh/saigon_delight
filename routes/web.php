@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\DaftarMenuController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// baris kode lain
+
+Route::resource('/kategori', KategoriController::class);
+Route::resource('/daftarmenu', DaftarMenuController::class);
+Route::resource('/laporan', LaporanController::class);
+
+Route::get('/', function() { return view('welcome'); } )->name('index');
