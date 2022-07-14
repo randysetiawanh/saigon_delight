@@ -14,6 +14,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
+  {{-- <link rel="stylesheet" href="css/signin.css"> --}}
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
@@ -56,12 +57,14 @@
               </a>
             </li>
           </ul> --}}
+          {{-- My Stylee --}}
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                <img src="images/iqbal.jpg" alt="profile"/>
-                <span class="nav-profile-name">Muhammad Kibal</span>
-              </a>
+            </li>
+          </ul>
+          <ul class ="navbar-nav">
+            <li class="nav-item">
+              <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>Login</a>
             </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -78,10 +81,7 @@
           </ul>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                <img src="images/iqbal.jpg" alt="profile"/>
-                <span class="nav-profile-name">Muhammad Kibal</span>
-              </a>
+              
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">
                   <i class="mdi mdi-settings text-primary"></i>
@@ -115,13 +115,10 @@
                         With a focus on bringing healthy, authentic Vietnamese food to all market segments, YEU SAIGON GROUP aims to have 14 outlets at the end of 2018 and 40 outlets throughout the country at the end of 2020. Eventually, the owners Praba and Mai want to expand internationally.
                         
                         <h6>CORE VALUES:</h6>
-                        
                             <ul><li>Create an organization that is joyful and happy for all its employees.</li></ul>
                             <ul><li>Bring back and promote honest cooking methods to provide nourishing and healthy cuisine.</li></ul>
                             <ul><li>Develop a supply-chain that integrates animal welfare and sustainable agricultural practice bringing farm to table products that are healthy for our customers.</li></ul>
-                        
-                        ­
-                        
+     
                         <h6>FUTURE:</h6>
                         
                             <ul><li>Current focus is on growing our business model in the greater Jakarta market. It is envisaged that by the end of 2018, we will be at 14 outlets and by 2020 at 40 outlets throughout the country.​</li></ul>
@@ -131,7 +128,6 @@
                              <ul><li>Bring a variety of authentic healthy Vietnamese cuisines to the Indonesian F&B market.</li></ul>
                              <ul><li>Make our product accessible to all segments of the market.</li></ul>
                              <ul><li>Offer healthy food to customers by growing food using sustainable farming practices and prohibiting MSG use.</li></ul>
-          
                         
                         <h6>KEYS TO SUCCESS:</h6>
                         

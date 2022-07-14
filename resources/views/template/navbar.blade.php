@@ -17,10 +17,6 @@
       </ul> --}}
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-            <img src="images/iqbal.jpg" alt="profile"/>
-            <span class="nav-profile-name">Muhammad Kibal</span>
-          </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
             <a class="dropdown-item">
               <i class="mdi mdi-settings text-primary"></i>

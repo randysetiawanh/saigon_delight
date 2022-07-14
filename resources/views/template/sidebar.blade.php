@@ -46,6 +46,7 @@
           <i class="mdi mdi-exit-to-app menu-icon"></i>
           <span class="menu-title">Logout</span>
         </a>
+      </li>
     </ul>
   </nav>
   <!-- partial -->
