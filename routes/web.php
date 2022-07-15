@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DaftarMenuController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::resource('/daftarmenu', DaftarMenuController::class);
 Route::resource('/laporan', LaporanController::class);
 
 Route::get('/', function() { return view('welcome'); } )->name('index');
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
