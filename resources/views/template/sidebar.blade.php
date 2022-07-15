@@ -8,7 +8,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('index') }}">
           <i class="mdi mdi-view-quilt menu-icon"></i>
-          <span class="menu-title">Dashboard</span>
+          <span class="menu-title">Home</span>
         </a>
       </li>
       {{-- <li class="nav-item">
@@ -17,6 +17,7 @@
           <span class="menu-title">Data User</span>
         </a>
       </li> --}}
+      @auth
       <li class="nav-item">
         <a class="nav-link" href="{{ route('daftarmenu.index') }}">
           <i class="mdi mdi-book-multiple-variant menu-icon"></i>
@@ -41,12 +42,7 @@
           <span class="menu-title">Laporan Penjualan</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-          <i class="mdi mdi-exit-to-app menu-icon"></i>
-          <span class="menu-title">Logout</span>
-        </a>
-      </li>
+      @endauth
     </ul>
   </nav>
   <!-- partial -->
